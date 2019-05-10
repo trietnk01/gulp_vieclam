@@ -41,6 +41,7 @@ gulp.task('scss-vidoco', function () {
     return gulp.src([
                     'src/scss/style.scss'
                     ])
+    .pipe(sass().on("error",sass.logError))
     .pipe(sourcemaps.init())
     .pipe(autoprefixer({
         browsers: ['last 2 versions', 'ie >= 9']
@@ -62,7 +63,7 @@ gulp.task('css-vidoco', ['scss-vidoco'], function () {
                     'src/summernote/summernote-bs4.css',
                     'src/animated/animate-3.5.2.css',
                     'src/alophone/css/callnow.css',
-                    'src/css/bundle.css'
+                    'src/css/bundle.css',
                     ])
     .pipe(cleanCSS())
     .pipe(concat('style.min.css'))
@@ -100,7 +101,7 @@ gulp.task('js-vidoco', function() {
         logError(err);
         browserSync.notify('<div style="color:red">JS fail!!!</div>', 30000);
     })
-    .pipe(concat('app.min.js'))
+    .pipe(concat('style.min.js'))
     .pipe(plumber.stop())
     .pipe(gulp.dest('../vieclam/public/frontend/js/'))
 });
