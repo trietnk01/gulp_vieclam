@@ -38,8 +38,8 @@ function logError(err) {
 }
 
 gulp.task('scss-vidoco', function () {
-    return gulp.src(['scss/pcss.scss',
-                    'scss/style.scss'
+    return gulp.src([
+                    'src/scss/style.scss'
                     ])
     .pipe(sourcemaps.init())
     .pipe(autoprefixer({
@@ -47,46 +47,50 @@ gulp.task('scss-vidoco', function () {
     }))
     .pipe(sourcemaps.write())
     .pipe(concat('bundle.css'))
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('src/css/'));
 });
 
 gulp.task('css-vidoco', ['scss-vidoco'], function () {
-    return gulp.src(['css/normalize-4.2.0.css',
-                    'css/bootstrap.min.css',
-                    'css/jquery-ui.min.css',
-                    'css/all.min.css',
-                    'css/animate-3.5.2.css',
-                    'css/simplelightbox.min.css',
-                    'css/modal-video.min.css',
-                    'css/owl.carousel.min.css',
-                    'css/ddsmoothmenu.css',
-                    'css/select2.min.css',
-                    'css/callnow.css',
-                    'css/bundle.css'
+    return gulp.src(['src/bootstrap-4/css/bootstrap.min.css',
+                    'src/fontawesome/css/all.min.css',
+                    'src/css/spinner.css',
+                    'src/owlcarousel/owl.carousel.min.css',
+                    'src/ddsmoothmenu/css/ddsmoothmenu.css',
+                    'src/ui/jquery-ui.css',
+                    'src/select2/select2.min.css',
+                    'src/datatables/jquery.dataTables.min.css',
+                    'src/summernote/summernote-bs4.css',
+                    'src/animated/animate-3.5.2.css',
+                    'src/alophone/css/callnow.css',
+                    'src/css/bundle.css'
                     ])
     .pipe(cleanCSS())
     .pipe(concat('style.min.css'))
-    .pipe(gulp.dest('css/'));
+    .pipe(gulp.dest('../vieclam/public/frontend/css/'));
 });
 
 
 gulp.task('js-vidoco', function() {
     return gulp.src([
-        'js/bootstrap.min.js',
-        'js/jquery-ui.min.js',
-        'js/simple-lightbox.min.js',
-        'js/jquery-modal-video.min.js',
-        'js/owl.carousel.min.js',
-        'js/wow.min.js',
-        'js/jquery.counterup.min.js',
-        'js/waypoints.min.js',
-        'js/scroll-top.js',
-        'js/ddsmoothmenu.js',
-        'js/select2.min.js',
-        'js/jquery.matchHeight-min.js',
-        'js/owl-carousel-pro.js',
-        'js/function.js',
-        'js/custom.js',
+        'src/js/jquery-1.11.3.min.js',
+        'src/bootstrap-4/js/bootstrap.min.js',
+        'src/fontawesome/js/all.min.js',
+        'src/ui/jquery-ui.js',
+        'src/datatables/jquery.dataTables.min.js',
+        'src/select2/select2.min.js',
+        'src/summernote/popper.js',
+        'src/summernote/summernote-bs4.js',
+        'src/ddsmoothmenu/js/ddsmoothmenu.js',
+        'src/owlcarousel/owl.carousel.min.js',
+        'src/counterup/jquery.counterup.min.js',
+        'src/counterup/waypoints.min.js',
+        'src/js/platform.js',
+        'src/js/scroll-top.js',
+        'src/js/owl-carousel-pro.js',
+        'src/js/spinner.js',
+        'src/js/table-library.js',
+        'src/js/custom.js',
+        'src/js/function.js',
         ])
     .pipe(plumber())
     .pipe(uglify())
@@ -98,7 +102,7 @@ gulp.task('js-vidoco', function() {
     })
     .pipe(concat('app.min.js'))
     .pipe(plumber.stop())
-    .pipe(gulp.dest('js/'))
+    .pipe(gulp.dest('../vieclam/public/frontend/js/'))
 });
 
 
