@@ -1,0 +1,1 @@
+ALTER TABLE `recruitment` ADD `rank_id` BIGINT(255) NULL AFTER `salary_id`;
